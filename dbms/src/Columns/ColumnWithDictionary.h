@@ -145,6 +145,7 @@ public:
     const IColumn & getIndexes() const { return *idx.getPositions(); }
     const ColumnPtr & getIndexesPtr() const { return idx.getPositions(); }
     size_t getIndexAt(size_t row) const { return idx.getPositionAt(row); }
+    size_t getSizeOfIndexType() const { return idx.getSizeOfIndexType(); }
 
     ///void setIndexes(MutableColumnPtr && indexes_) { indexes = std::move(indexes_); }
 
@@ -187,6 +188,7 @@ public:
         UInt64 getMaxPositionForCurrentType() const;
 
         static size_t getSizeOfIndexType(const IColumn & column, size_t hint);
+        size_t getSizeOfIndexType() const { return size_of_type; }
 
         void check(size_t max_dictionary_size);
         void checkSizeOfType();
